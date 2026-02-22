@@ -1,12 +1,16 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58a3f1ba76de980144c1b9cb5832cfd0d724bd1a
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
 
     <h2>Please login:</h2>
+<<<<<<< HEAD
 
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
@@ -17,4 +21,11 @@
         </button>
     </form>
 
+=======
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+>>>>>>> 58a3f1ba76de980144c1b9cb5832cfd0d724bd1a
 {% endblock %}

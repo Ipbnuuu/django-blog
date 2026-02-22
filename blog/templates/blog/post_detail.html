@@ -3,6 +3,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-10 mx-auto">
+<<<<<<< HEAD
 
             <!-- Judul Postingan -->
             <h1 class="display-5">{{ post.title }}</h1>
@@ -14,11 +15,23 @@
                     <a class="btn btn-outline-secondary btn-sm"
                        href="{% url 'post_edit' pk=post.pk %}"
                        >Edit</a>
+=======
+            <!-- Judul Postingan -->
+            <h1 class="display-5">{{ post.title }}</h1>
+            <p class="text-muted">
+                Oleh: {{ post.author }} | Dipublikasi: {{ post.published_date }}
+                {% if user.is_authenticated %}
+                <a
+                    class="btn btn-outline-secondary btn-sm"
+                    href="{% url 'post_edit' pk=post.pk %}"
+                    >Edit</a>
+>>>>>>> 58a3f1ba76de980144c1b9cb5832cfd0d724bd1a
                 {% endif %}
             </p>
 
             <!-- Gambar Header -->
             {% if post.header_image %}
+<<<<<<< HEAD
                 <img src="{{ post.header_image.url }}"
                      class="img-fluid rounded mb-4"
                      alt="{{ post.title }}">
@@ -55,6 +68,37 @@
                 <p>No comments here yet :(</p>
             {% endfor %}
 
+=======
+            <img
+                src="{{ post.header_image.url }}"
+                class="img-fluid rounded mb-4"
+                alt="{{ post.title }}"
+            />
+            {% endif %}
+
+            <!-- Konten Postingan (Rich Text) -->
+            <div class="post-content">{{ post.text|safe }}</div>
+            <hr class="my-5" />
+            <a
+                class="btn btn-secondary"
+                role="button"
+                href="{% url 'add_comment_to_post' pk=post.pk %}"
+                >Add comment</a
+            >
+
+            <hr class="my-5" />
+            {% for comment in post.comments.all %}
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    {{ comment.created_date }}
+                    <strong>{{ comment.author }}</strong>
+                    <p>{{ comment.text|linebreaks }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No comments here yet :(</p>
+            {% endfor %}
+>>>>>>> 58a3f1ba76de980144c1b9cb5832cfd0d724bd1a
         </div>
     </div>
 </div>
